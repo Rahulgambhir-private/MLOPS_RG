@@ -7,7 +7,7 @@ command: >-
 inputs:
   training_data: 
     type: uri_folder 
-    path: ./experimentation/data  # Reference to the local data folder containing the diabetes-dev.csv file
+    path: azureml:diabetes-dev-folder:1  # Reference to the local data folder containing the diabetes-dev.csv file
   reg_rate: 
     type: number
     default: 0.01
