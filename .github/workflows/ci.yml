@@ -1,9 +1,7 @@
 name: Code checks
 
 on:
-  pull_request:
-    branches:
-      - main  # Specify the branch to protect, such as 'main'
+  workflow_dispatch:
 
 jobs:
   lint:
