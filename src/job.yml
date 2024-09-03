@@ -1,5 +1,5 @@
 $schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
-code: src/model  # Path to the directory containing train.py
+code: ./src/model  # Correct path to the directory containing train.py
 
 command: >-
   python train.py --training_data ${{inputs.training_data}} --reg_rate ${{inputs.reg_rate}}
@@ -7,12 +7,12 @@ command: >-
 inputs:
   training_data: 
     type: uri_folder 
-    path: azureml:diabetes-dev-folder@latest  # Reference to the registered data asset in Azure
+    path: ./experimentation/data  # Reference to the local data folder containing the diabetes-dev.csv file
   reg_rate: 
     type: number
     default: 0.01
 
 environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest  # Azure ML environment to use
-compute: azureml:my-compute-cluster  # Replace with your compute target name
+compute: azureml:mlopscluster  # Correct compute target name
 experiment_name: diabetes-training-experiment  # Meaningful name for your experiment
-description: Train a classification model using diabetes dataset #updated
+description: Train a classification model using the diabetes dataset
