@@ -1,5 +1,5 @@
 $schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
-code: ./src/model  # Correct path to the directory containing train.py
+code: src/model  # Correct path to the directory containing train.py
 
 command: >-
   python train.py --training_data ${{inputs.training_data}} --reg_rate ${{inputs.reg_rate}}
@@ -7,9 +7,9 @@ command: >-
 inputs:
   training_data: 
     type: uri_folder 
-    path: azureml:diabetes-dev-folder:1  # Reference to the local data folder containing the diabetes-dev.csv file
+    path: azureml:diabetes-dev-folder:1  # Reference to the registered data asset in Azure ML
   reg_rate: 
-    type: number
+    type: literal  # Change input type to literal to match Azure ML's expected input type for numbers
     default: 0.01
 
 environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest  # Azure ML environment to use
